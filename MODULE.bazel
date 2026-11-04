@@ -1,0 +1,8 @@
+module(name = "bazel_env_materialization_repro")
+
+bazel_dep(name = "bazel_env.bzl", version = "0.10.0")
+bazel_dep(name = "jq.bzl", version = "0.7.0")
+
+jq = use_extension("@jq.bzl//jq:extensions.bzl", "toolchains")
+use_repo(jq, "jq_toolchains")
+register_toolchains("@jq_toolchains//:all")

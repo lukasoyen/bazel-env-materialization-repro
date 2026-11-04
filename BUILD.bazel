@@ -1,0 +1,12 @@
+load("@bazel_env.bzl//:bazel_env.bzl", "bazel_env")
+
+bazel_env(
+    name = "bazel_env",
+    toolchains = {"jq": "@jq_toolchains//:resolved_toolchain"},
+)
+
+bazel_env(
+    name = "bazel_env_tools",
+    tools = {"jq": "$(JQ_BIN)"},
+    toolchains = {"jq": "@jq_toolchains//:resolved_toolchain"},
+)
